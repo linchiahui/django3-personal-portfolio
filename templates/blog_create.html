@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+{% load static %}
+
+    <section class="jumbotron text-center">
+        <h1>New Blog</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p}}
+            <button type ='submit'>Save</button>
+        </form>
+    </section>
+
+{% endblock %}
