@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+{% load static %}
+
+    <h1>Godfrey Portfolio</h1>
+    <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Hi, I'm Godfrey.</h1>
+          <p class="lead text-muted">Hey, my name is Godfrey Walter and I love to make Django websites. It's the thrill of handling the requests that the people want!</p>
+          <p>
+            <a href="mailto:nage82822@gmail.com" class="btn btn-primary my-2">Email Me</a>
+          </p>
+          <img src="{% static 'portfolio.jpg' %}" height="500">
+        </div>
+    </section>
+
+
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+    
+            <div class="row">
+                {% for project in projects %}
+
+                <h2>{{ project.title }}</h2>
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" src="media/{{ project.image }}"/>
+                        <div class="card-body">
+                            <p class="card-text">{{ project.description }}</p>
+                        </div>
+                        {% if project.url %}
+                        <br><a href="{{ project.url }}"></a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>       
+
+    <footer class="text-muted">
+        <div class="container text-center">
+          <p>© Godfrey Lin {% now "Y" %}</p>
+          </div>
+    </footer>
+{% endblock %}
